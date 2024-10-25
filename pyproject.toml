@@ -1,0 +1,33 @@
+[project]
+name = "random-land-points"
+version = "0.0.1"
+authors = [
+  { name="Duncan Eddy", email="duncan@argoinnovations.com" },
+]
+description = "Sampling random points from non-convex polygons and land areas"
+readme = "README.md"
+requires-python = ">=3.11"
+
+dependencies = [
+    "numpy<2.0", # needed for simpeg to work.
+    "typer",
+]
+
+# Add dev dependencies
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+]
+
+examples = [
+    "matplotlib",
+    "cartopy",
+]
+
+[project.urls]
+Homepage = "https://github.com/duncaneddy/random-land-points"
+
+[tool.setuptools]
+py-modules = ['random_land_points']
+packages = ['random_land_points']
