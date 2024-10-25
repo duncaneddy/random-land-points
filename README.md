@@ -3,8 +3,10 @@
 [![Unit](https://github.com/duncaneddy/random-land-points/actions/workflows/ci.yml/badge.svg)](https://github.com/duncaneddy/random-land-points/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/github/duncaneddy/random-land-points/badge.svg)](https://coveralls.io/github/duncaneddy/random-land-points)
 
-This is a little pack to help get random points on land. This can be done either for all
+This is a little package that allows you to randomly sample points on land. This can be done either for all
 land masses or by country.
+
+![Random Points](./images/random_points.png)
 
 ## Installation
 
