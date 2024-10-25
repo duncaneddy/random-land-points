@@ -16,7 +16,8 @@ This package can be used to get random points on land in a provided polygon or i
 To sample from a specific country, you can use the `random_points` function. This function takes a country name as an argument and returns a random point on land in that country.
 
 ```python
-import random_land_points as rlp
+
+from src import random_land_points as rlp
 
 # Get a random point on land
 point = rlp.random_points('United States of America')
@@ -33,7 +34,8 @@ The number of polygons and the available countries vary by resolution.
 An example of this is shown below:
 
 ```python
-import random_land_points as rlp
+
+from src import random_land_points as rlp
 
 # Get all high resolution countries
 countries = rlp.get_countries(resolution='high')
@@ -45,7 +47,8 @@ point = rlp.random_points('Italy', resolution='high')
 If you need to get the list of all supported courntries, you can use the `get_countries` function.
 
 ```python
-import random_land_points as rlp
+
+from src import random_land_points as rlp
 
 countries = rlp.get_countries()
 ```
@@ -54,7 +57,8 @@ To sample from a specific polygon, you can use the `random_point_in_polygon` fun
 polygon as an argument and returns a random point on land in that polygon.
 
 ```python
-import random_land_points as rlp
+
+from src import random_land_points as rlp
 from shapely.geometry import Polygon
 
 # Create a polygon

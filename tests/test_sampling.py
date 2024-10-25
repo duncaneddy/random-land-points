@@ -3,8 +3,8 @@ from shapely.geometry.point import Point
 
 import random_land_points as rlp
 
-from random_land_points.countries import get_country_polygons
-from random_land_points.sampling import random_point_in_polygon
+from random_land_points import get_country_polygons
+from random_land_points import random_point_in_polygon
 
 
 def test_get_total_country_area():

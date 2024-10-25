@@ -5,7 +5,7 @@ This is a simple example that shows how to create a plot of a country outline.
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 
-import random_land_points as rlp
+from src import random_land_points as rlp
 
 # Get the country polygon
 country = 'United States of America'

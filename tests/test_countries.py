@@ -1,4 +1,4 @@
-from random_land_points.countries import get_countries, get_country_polygons
+from random_land_points import get_countries, get_country_polygons
 
 def test_countries():
     c = get_countries()

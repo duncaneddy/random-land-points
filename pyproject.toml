@@ -30,7 +30,9 @@ Homepage = "https://github.com/duncaneddy/random-land-points"
 
 [tool.setuptools]
 py-modules = ['random_land_points']
-packages = ['random_land_points']
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.setuptools.package-data]
-hello = ['data/*']
+"*" = ["*"]
