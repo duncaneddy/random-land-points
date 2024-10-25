@@ -23,6 +23,7 @@ dev = [
 examples = [
     "matplotlib",
     "cartopy",
+    "shapely",
 ]
 
 [project.urls]
