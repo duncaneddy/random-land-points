@@ -1,6 +1,6 @@
 [project]
 name = "random-land-points"
-version = "0.9.1"
+version = "1.0.0"
 authors = [
   { name="Duncan Eddy", email="duncan.eddy@gmail.com" },
 ]
