@@ -1,5 +1,5 @@
 """
-Module that provides methods for
+Module that provides methods for sampling points from countires
 """
 
 import geopandas as gpd
@@ -9,7 +9,7 @@ from shapely.geometry import MultiPolygon, Polygon
 from functools import lru_cache
 
 
-def get_data_path(resolution:str) -> Path:
+def get_country_data_path(resolution:str) -> Path:
     """
     Returns the path to the data file
 
@@ -45,7 +45,7 @@ def get_country_data(resolution:str = 'medium') -> gpd.GeoDataFrame:
             The country data
     """
 
-    return gpd.read_file(get_data_path(resolution))
+    return gpd.read_file(get_country_data_path(resolution))
 
 @lru_cache(maxsize = 50)
 def get_countries(resolution: str = 'medium') -> list[str]:
@@ -57,13 +57,12 @@ def get_countries(resolution: str = 'medium') -> list[str]:
             A list of country names
     """
 
-    country_data = gpd.read_file(get_data_path(resolution))
+    country_data = get_country_data(resolution)
     country_names = sorted(country_data['NAME_EN'].tolist())
 
     country_names_filtered = []
 
     for country in country_names:
-        print((country, country_data[country_data['NAME_EN'] == country].geometry.shape[0]))
         if country_data[country_data['NAME_EN'] == country].geometry.shape[0] >= 1:
             country_names_filtered.append(country)
 
@@ -86,6 +85,11 @@ def get_country_polygons(country: str, resolution:str = 'medium') -> list[Polygo
     """
 
     countries = get_country_data(resolution)
+
+    # Check that the continent exists
+    if country not in countries['NAME_EN'].unique():
+        raise ValueError(f"Country \"{country}\" does not exist")
+
     country_polygon = countries[countries['NAME_EN'] == country].geometry
 
     if country_polygon.shape[0] == 0:
@@ -117,6 +121,11 @@ def get_country_points(country: str, resolution:str = 'medium') -> list[np.ndarr
     """
 
     countries = get_country_data(resolution)
+
+    # Check that the continent exists
+    if country not in countries['NAME_EN'].unique():
+        raise ValueError(f"Country \"{country}\" does not exist")
+
     country_polygon = countries[countries['NAME_EN'] == country].geometry
 
     if country_polygon.shape[0] == 0:

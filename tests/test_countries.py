@@ -1,4 +1,6 @@
-from random_land_points import get_countries, get_country_polygons
+import pytest
+from random_land_points import get_countries, get_country_polygons, get_country_points
+
 
 def test_countries():
     c = get_countries()
@@ -47,3 +49,31 @@ def test_get_country_polygon_high():
     for country in get_countries(resolution):
         polygon = get_country_polygons(country, resolution)
         assert len(polygon) > 0
+
+def test_get_country_points():
+
+    for country in get_countries():
+        points = get_country_points(country)
+        assert len(points) > 0
+
+def test_get_country_name_invalid_polygons():
+
+    # Confirm raises ValueError
+    with pytest.raises(ValueError):
+        get_country_polygons('Not a country')
+
+def test_get_country_name_invalid_points():
+
+    # Confirm raises ValueError
+    with pytest.raises(ValueError):
+        get_country_points('Not a country')
+
+def test_invalid_resolution():
+
+    # Confirm raises ValueError
+    with pytest.raises(ValueError):
+        get_country_polygons('United States of America', 'invalid')
+
+    # Confirm raises ValueError
+    with pytest.raises(ValueError):
+        get_country_points('United States of America', 'invalid')

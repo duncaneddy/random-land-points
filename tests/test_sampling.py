@@ -50,11 +50,41 @@ def test_random_point_in_polygon():
     point = Point(point)
     assert polygon.contains(point)
 
-def test_random_points():
+def test_random_country_points():
 
-    points = rlp.random_points('Austria', count=10)
+    points = rlp.random_country_points('Austria', count=10)
 
     assert len(points) == 10
     for point in points:
         point = Point(point)
         assert get_country_polygons('Austria')[0].contains(point)
+
+def test_random_continent_points():
+
+    points = rlp.random_continent_points('Europe', count=10)
+
+    assert len(points) == 10
+
+
+def test_random_point_no_args():
+
+    point = rlp.random_points()[0]
+
+    assert len(point) == 2
+
+def test_random_point_with_country():
+
+    point = rlp.random_points(country='Austria')[0]
+
+    point = Point(point)
+
+    assert get_country_polygons('Austria')[0].contains(point)
+
+def test_random_point_with_continent():
+
+    point = rlp.random_points(continent='Asia')[0]
+
+    assert point[0] >= 0
+    assert point[0] <= 180
+    assert point[1] >= -90
+    assert point[1] <= 90

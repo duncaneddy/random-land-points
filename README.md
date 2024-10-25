@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/duncaneddy/random-land-points/badge.svg)](https://coveralls.io/github/duncaneddy/random-land-points)
 
 This is a little package that allows you to randomly sample points on land. This can be done either for all
-land masses or by country.
+land masses, by continent, or by country.
 
 ![Random Points](./images/random_points.png)
 
@@ -18,17 +18,30 @@ pip install random-land-points
 
 This package can be used to get random points on land in a provided polygon or in a specific country.
 
-To sample from a specific country, you can use the `random_points` function. This function takes a country name as an argument and returns a random point on land in that country.
+To sampleyou can use the `random_points` function. This function returns a random point on land in the provided polygon.
 
 ```python
 
 from src import random_land_points as rlp
 
 # Get a random point on land
-point = rlp.random_points('United States of America')
+point = rlp.random_points()
 
 # Get 10 random points on land
-points = rlp.random_points('United States of America', 10)
+points = rlp.random_points(count=10)
+```
+
+You can also sample points by continent or by country. To do this, you can pass the continent or country name as an argument to the `random_points` function.
+
+```python
+
+from src import random_land_points as rlp
+
+# Get a random point on land in Europe
+point = rlp.random_points('Europe')
+
+# Get a random point on land in Italy
+point = rlp.random_points('Italy')
 ```
 
 The package utilizes the [Natural Earth](https://www.naturalearthdata.com/downloads/) dataset to get the land polygons for each country.
@@ -49,7 +62,7 @@ countries = rlp.get_countries(resolution='high')
 point = rlp.random_points('Italy', resolution='high')
 ```
 
-If you need to get the list of all supported courntries, you can use the `get_countries` function.
+If you need to get the list of all supported countries, you can use the `get_countries` function.
 
 ```python
 
@@ -87,7 +100,9 @@ pip install random-land-points[examples]
 Then run the examples with the following command:
 
 ```bash
-python ./examples/plot_random_sampling.py
+python ./examples/random_points.py
+python ./examples/random_by_continent.py
+python ./examples/random_by_country.py
 ```
 
 ## Development
@@ -107,3 +122,7 @@ pytest
 ## License
 
 This package is licensed under the MIT license. See the [LICENSE](LICENSE) file for more details.
+
+## Acknowledgements
+
+Made with Natural Earth. Free vector and raster map data @ [naturalearthdata.com](https://www.naturalearthdata.com).
