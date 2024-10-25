@@ -1,19 +1,19 @@
 name: Publish to PyPI
 
+# Only trigger on tags
 on:
   release:
-    types:
-      - published
+    types: [published]
 
 jobs:
-  build_wheels:
-    name: Build wheels on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        # macos-13 is an intel runner, macos-14 is apple silicon
-        os: [ubuntu-latest, windows-latest, macos-13, macos-14]
-
+#  build_wheels:
+#    name: Build wheels on ${{ matrix.os }}
+#    runs-on: ${{ matrix.os }}
+#    strategy:
+#      matrix:
+#        # macos-13 is an intel runner, macos-14 is apple silicon
+#        os: [ubuntu-latest, windows-latest, macos-13, macos-14]
+#
 # No pure python so we don't build wheels
 #    steps:
 #      - uses: actions/checkout@v4
