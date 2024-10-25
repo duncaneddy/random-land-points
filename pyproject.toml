@@ -10,7 +10,7 @@ requires-python = ">=3.11"
 
 dependencies = [
     "numpy<2.0", # needed for simpeg to work.
-    "typer",
+    "shapely",
 ]
 
 # Add dev dependencies
@@ -23,7 +23,6 @@ dev = [
 examples = [
     "matplotlib",
     "cartopy",
-    "shapely",
 ]
 
 [project.urls]
