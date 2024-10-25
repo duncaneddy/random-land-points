@@ -1,4 +1,4 @@
-from pytest import approx
+from pytest import approx, raises
 from shapely.geometry.point import Point
 
 import random_land_points as rlp
@@ -88,3 +88,18 @@ def test_random_point_with_continent():
     assert point[0] <= 180
     assert point[1] >= -90
     assert point[1] <= 90
+
+def test_random_point_invalid_count():
+
+    with raises(ValueError):
+        point = rlp.random_points(count=-1)
+
+def test_random_continent_points_invalid_count():
+
+    with raises(ValueError):
+        point = rlp.random_continent_points('Europe', count=-1)
+
+def test_random_country_points_invalid_count():
+
+    with raises(ValueError):
+        point = rlp.random_country_points('Austria', count=-1)

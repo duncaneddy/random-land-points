@@ -44,9 +44,6 @@ def get_continent_polygons(continent: str, resolution: str = 'medium') -> list[P
 
     country_polygon = countries[countries['CONTINENT'] == continent].geometry
 
-    if country_polygon.shape[0] == 0:
-        return []
-
     polys = []
 
     for i in range(country_polygon.shape[0]):

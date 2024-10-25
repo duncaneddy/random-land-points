@@ -92,9 +92,6 @@ def get_country_polygons(country: str, resolution:str = 'medium') -> list[Polygo
 
     country_polygon = countries[countries['NAME_EN'] == country].geometry
 
-    if country_polygon.shape[0] == 0:
-       return []
-
     # Get list of numpy arrays if the country is a MultiPolygon
     if isinstance(country_polygon.iloc[0], MultiPolygon):
         polys = [poly for poly in country_polygon.iloc[0].geoms]
@@ -127,9 +124,6 @@ def get_country_points(country: str, resolution:str = 'medium') -> list[np.ndarr
         raise ValueError(f"Country \"{country}\" does not exist")
 
     country_polygon = countries[countries['NAME_EN'] == country].geometry
-
-    if country_polygon.shape[0] == 0:
-       return []
 
     # Get list of numpy arrays if the country is a MultiPolygon
     if isinstance(country_polygon.iloc[0], MultiPolygon):
