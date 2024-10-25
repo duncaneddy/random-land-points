@@ -103,3 +103,8 @@ def test_random_country_points_invalid_count():
 
     with raises(ValueError):
         point = rlp.random_country_points('Austria', count=-1)
+
+def test_random_point_bad_inputs():
+
+    with raises(ValueError):
+        point = rlp.random_points(country='Austria', continent='Europe')
