@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   is contained within the respective generating polygon.
 - Added `get_resolutions` function to get the available resolutions available in the package.
 
+### Documentation
+- Updated the README.md file to include the new functions and examples.
+
 ## [1.0.0] - 2024-10-25
 
 ### Added

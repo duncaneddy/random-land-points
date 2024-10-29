@@ -43,11 +43,20 @@ def test_is_in_bad_input():
     with pytest.raises(ValueError):
         is_in([0, 0], continent='Asia', country='United States of America')
 
+def test_is_in_bad_len_input():
+    with pytest.raises(ValueError):
+        is_in([0, 0, 0, 0])
+
+def test_is_in_country_bad_len_input():
+    with pytest.raises(ValueError):
+        is_in_country([0, 0, 0], country='Italy')
+
 def test_is_in_list_input():
     assert is_in([0, 0]) == False
 
 def test_is_in_country_list_input():
     assert is_in([0, 0], country='United States of America') == False
+
 
 def test_is_in_continent_list_input():
     assert is_in([0, 0], continent='Asia') == False

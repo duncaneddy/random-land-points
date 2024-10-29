@@ -116,8 +116,6 @@ def is_in(point: np.ndarray | list[float] | list[int], continent: str | None = N
             point = np.array(point)  # Coerce type
         p = point.reshape(-1).squeeze()
 
-        print(p)
-        print(p.shape)
         if p.shape[0] != 2:
             raise ValueError(f'Input point must be a 2D Vector. Found {p.shape[0]}')
 
