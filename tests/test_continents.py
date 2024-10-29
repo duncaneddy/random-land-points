@@ -22,4 +22,4 @@ def test_get_continent_name_invalid():
 
     # Confirm raises ValueError
     with pytest.raises(ValueError):
-        get_continent_polygons('Not a country')
+        get_continent_polygons('Not a continent')

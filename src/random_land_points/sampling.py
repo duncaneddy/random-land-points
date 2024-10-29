@@ -49,7 +49,7 @@ def compute_country_polygon_weights(country: str, resolution: str = 'medium') ->
     total_area = sum([polygon.area for polygon in polygons])
     return [polygon.area / total_area for polygon in polygons]
 
-def random_country_points(country: str, count: int = 1, resolution:str = 'medium') -> np.ndarray:
+def random_country_points(country: str, count: int = 1, resolution:str = 'medium') -> list[np.ndarray]:
     """
     Returns a random point within a country
 
@@ -79,7 +79,7 @@ def random_country_points(country: str, count: int = 1, resolution:str = 'medium
         polygon = random.choices(polygons, weights=weights)[0]
         points.append(random_point_in_polygon(polygon))
 
-    return np.array(points)
+    return points
 
 @lru_cache(maxsize = 50)
 def get_total_country_area(country: str, resolution: str = 'medium') -> float:
@@ -168,7 +168,7 @@ def compute_continent_polygon_weights(continent: str, resolution: str = 'medium'
     total_area = sum([polygon.area for polygon in polygons])
     return [polygon.area / total_area for polygon in polygons]
 
-def random_continent_points(continent: str, count: int = 1, resolution: str = 'medium') -> np.ndarray:
+def random_continent_points(continent: str, count: int = 1, resolution: str = 'medium') -> list[np.ndarray]:
     """
     Returns a random point within a continent
 
@@ -198,7 +198,7 @@ def random_continent_points(continent: str, count: int = 1, resolution: str = 'm
         polygon = random.choices(continent_polygons, weights=weights)[0]
         points.append(random_point_in_polygon(polygon))
 
-    return np.array(points)
+    return points
 
 @lru_cache(maxsize = 7)
 def get_continent_area(continent: str, resolution: str = 'medium') -> float:
@@ -223,7 +223,7 @@ def get_continent_area(continent: str, resolution: str = 'medium') -> float:
 
     return total_area
 
-def random_points(continent: str | None = None, country: str | None = None, count: int = 1, resolution: str = 'medium') -> np.ndarray:
+def random_points(continent: str | None = None, country: str | None = None, count: int = 1, resolution: str = 'medium') -> list[np.ndarray]:
     """
     Returns a random point on land
 
@@ -266,4 +266,4 @@ def random_points(continent: str | None = None, country: str | None = None, coun
             continent = random.choices(continent_names, weights=continent_weights)[0]
             points.append(random_continent_points(continent, 1, resolution)[0])
 
-        return np.array(points)
+        return points

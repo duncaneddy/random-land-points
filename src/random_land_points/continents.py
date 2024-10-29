@@ -48,7 +48,7 @@ def get_continent_polygons(continent: str, resolution: str = 'medium') -> list[P
 
     for i in range(country_polygon.shape[0]):
         if isinstance(country_polygon.iloc[i], MultiPolygon):
-            polys += [poly for poly in country_polygon.iloc[i].geoms]
+            polys.extend([poly for poly in country_polygon.iloc[i].geoms])
         else:
             polys.append(country_polygon.iloc[i])
 
