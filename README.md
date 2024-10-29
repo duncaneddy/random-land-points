@@ -18,14 +18,16 @@ pip install random-land-points
 
 This package can be used to get random points on land in a provided polygon or in a specific country.
 
-To sampleyou can use the `random_points` function. This function returns a random point on land in the provided polygon.
+To sample you can use the `random_points` function. This function returns a random point on land in the provided polygon.
+All points are returned as a list of numpy arrays with the first element being the longitude and the second element being the latitude.
+That is `[lon, lat]`.
 
 ```python
 
-from src import random_land_points as rlp
+import random_land_points as rlp
 
 # Get a random point on land
-point = rlp.random_points()
+point = rlp.random_points() # Point is [lon, lat]
 
 # Get 10 random points on land
 points = rlp.random_points(count=10)
@@ -35,7 +37,7 @@ You can also sample points by continent or by country. To do this, you can pass 
 
 ```python
 
-from src import random_land_points as rlp
+import random_land_points as rlp
 
 # Get a random point on land in Europe
 point = rlp.random_points('Europe')
@@ -53,7 +55,7 @@ An example of this is shown below:
 
 ```python
 
-from src import random_land_points as rlp
+import random_land_points as rlp
 
 # Get all high resolution countries
 countries = rlp.get_countries(resolution='high')
@@ -66,7 +68,7 @@ If you need to get the list of all supported countries, you can use the `get_cou
 
 ```python
 
-from src import random_land_points as rlp
+import random_land_points as rlp
 
 countries = rlp.get_countries()
 ```
@@ -76,7 +78,7 @@ polygon as an argument and returns a random point on land in that polygon.
 
 ```python
 
-from src import random_land_points as rlp
+import random_land_points as rlp
 from shapely.geometry import Polygon
 
 # Create a polygon
@@ -84,6 +86,23 @@ polygon = Polygon([(0, 0), (1, 0), (1, 1), (0, 1)])
 
 # Get a random point on land in the polygon
 point = rlp.random_point_in_polygon(polygon)
+```
+
+You can check whether a given `(x,y)` coordinate is contained within a generating polygon by using the `is_in` function.
+This function returns a boolean value indicating whether the point is contained within the generating polygon.
+
+```python
+
+import random_land_points as rlp
+
+# Check if a point is in the generating polygon
+rlp.is_in(0.0, 0.0) # False
+
+# Check by country
+rlp.is_in_country(0.0, 0.0, 'Italy') # False
+
+# Check by continent
+rlp.is_in_continent(0.0, 0.0, 'Europe') # False
 ```
 
 ## Examples
